@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import androidx.annotation.LayoutRes
 import com.redapparat.layoutverifier.extractor.CompositeFeatureExtractor
 import com.redapparat.layoutverifier.extractor.FeatureExtractor
-import com.redapparat.layoutverifier.extractor.LayoutPositionExtractor
+import com.redapparat.layoutverifier.extractor.CommonExtractor
 import com.redapparat.layoutverifier.extractor.content.TextViewExtractor
 import com.redapparat.layoutverifier.serializer.GsonSerializer
 import com.redapparat.layoutverifier.serializer.Serializer
@@ -43,7 +43,7 @@ class LayoutVerifier private constructor(
                 configuration = Configuration(
                     featureExtractor = CompositeFeatureExtractor(
                         listOf(
-                            LayoutPositionExtractor(),
+                            CommonExtractor(),
                             TextViewExtractor()
                         ) + featureExtractors
                     ),
