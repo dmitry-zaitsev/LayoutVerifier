@@ -25,4 +25,8 @@ class GsonSerializer(
             )
         }
     }
+
+    override fun toPrettyJson(entity: Any): String {
+        return gson.toJson(entity)
+    }
 }

@@ -10,4 +10,6 @@ internal interface Serializer {
 
     fun deserializeFromStream(stream: InputStream): Map<String, *>
 
+    fun toPrettyJson(entity: Any): String
+
 }

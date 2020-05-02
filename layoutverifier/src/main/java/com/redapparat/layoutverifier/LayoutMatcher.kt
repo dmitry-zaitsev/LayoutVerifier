@@ -79,10 +79,15 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            assertEquals(
-                snapshot - excludedFeatures,
-                features - excludedFeatures
-            )
+            val expected = snapshot - excludedFeatures
+            val actual = features - excludedFeatures
+
+            if (expected != actual) {
+                assertEquals(
+                    configuration.serializer.toPrettyJson(expected),
+                    configuration.serializer.toPrettyJson(actual)
+                )
+            }
         } else {
             ensureSnapshotsDirectoryExists()
 
