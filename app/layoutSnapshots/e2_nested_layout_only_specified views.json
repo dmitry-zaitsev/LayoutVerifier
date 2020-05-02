@@ -8,6 +8,9 @@
           "right": 301.0,
           "bottom": 41.0,
           "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.demo:id/text_top",
           "text": "Top"
         }
       ]
@@ -20,6 +23,9 @@
           "right": 303.0,
           "bottom": 41.0,
           "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.demo:id/text_bottom",
           "text": "Bottom"
         }
       ]

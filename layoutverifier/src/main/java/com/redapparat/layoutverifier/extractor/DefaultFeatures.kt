@@ -8,5 +8,8 @@ object DefaultFeatures {
     const val BOTTOM = "bottom"
     const val TYPE = "type"
     const val TEXT = "text"
+    const val ENABLED = "enabled"
+    const val CLICKABLE = "clickable"
+    const val ID = "id"
 
 }

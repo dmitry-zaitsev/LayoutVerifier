@@ -19,7 +19,10 @@ class LayoutMatcher internal constructor(
     private var heightPx = 800
 
     private var viewIds: Set<Int>? = null
-    private val excludedFeatures = mutableSetOf(DefaultFeatures.TYPE)
+    private val excludedFeatures = mutableSetOf(
+        DefaultFeatures.TYPE,
+        DefaultFeatures.ID
+    )
 
     fun screenSizePx(widthPx: Int, heightPx: Int): LayoutMatcher {
         this.widthPx = widthPx
