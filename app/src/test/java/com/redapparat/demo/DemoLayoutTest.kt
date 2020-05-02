@@ -25,7 +25,7 @@ class DemoLayoutTest {
     }
 
     @Test
-    fun `Flat layout on a small screen`() {
+    fun `Flat layout - on a small screen`() {
         layoutVerifier.layout(R.layout.e1_flat_layout)
             .screenSize(240, 320)
             .match("e1_flat_layout_240x320")
@@ -35,6 +35,16 @@ class DemoLayoutTest {
     fun `Nested layout`() {
         layoutVerifier.layout(R.layout.e2_nested_layout)
             .match("e2_nested_layout")
+    }
+
+    @Test
+    fun `Nested layout - only check specified views`() {
+        layoutVerifier.layout(R.layout.e2_nested_layout)
+            .views(
+                R.id.text_top,
+                R.id.text_bottom
+            )
+            .match("e2_nested_layout_only_specified views")
     }
 
 }

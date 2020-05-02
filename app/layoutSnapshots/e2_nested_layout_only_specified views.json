@@ -1,0 +1,28 @@
+{
+  "children": [
+    {
+      "children": [
+        {
+          "left": 298.0,
+          "top": 0.0,
+          "right": 301.0,
+          "bottom": 41.0,
+          "type": "android.widget.TextView",
+          "text": "Top"
+        }
+      ]
+    },
+    {
+      "children": [
+        {
+          "left": 297.0,
+          "top": 0.0,
+          "right": 303.0,
+          "bottom": 41.0,
+          "type": "android.widget.TextView",
+          "text": "Bottom"
+        }
+      ]
+    }
+  ]
+}

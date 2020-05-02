@@ -3,6 +3,8 @@ package com.redapparat.layoutverifier
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.IdRes
+import com.redapparat.layoutverifier.extractor.DefaultFeatures
 import org.junit.Assert.assertEquals
 import java.io.File
 import java.io.IOException
@@ -16,6 +18,9 @@ class LayoutMatcher internal constructor(
     private var widthPx = 600
     private var heightPx = 800
 
+    private var viewIds: Set<Int>? = null
+    private val excludedFeatures = mutableSetOf(DefaultFeatures.TYPE)
+
     fun screenSizePx(widthPx: Int, heightPx: Int): LayoutMatcher {
         this.widthPx = widthPx
         this.heightPx = heightPx
@@ -28,6 +33,28 @@ class LayoutMatcher internal constructor(
             dpToPx(widthDp.toFloat()).toInt(),
             dpToPx(heightDp.toFloat()).toInt()
         )
+    }
+
+    fun views(@IdRes vararg viewIds: Int): LayoutMatcher {
+        this.viewIds = viewIds.toSet()
+
+        return this
+    }
+
+    fun matchType(match: Boolean): LayoutMatcher {
+        if (match) {
+            excludedFeatures.remove(DefaultFeatures.TYPE)
+        } else {
+            excludedFeatures.add(DefaultFeatures.TYPE)
+        }
+
+        return this
+    }
+
+    fun excludeFeatures(toExclude: Iterable<String>): LayoutMatcher {
+        excludedFeatures.addAll(toExclude)
+
+        return this
     }
 
     private fun dpToPx(dp: Float): Float {
@@ -49,7 +76,10 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            assertEquals(snapshot, features)
+            assertEquals(
+                snapshot - excludedFeatures,
+                features - excludedFeatures
+            )
         } else {
             ensureSnapshotsDirectoryExists()
 
@@ -88,7 +118,11 @@ class LayoutMatcher internal constructor(
     }
 
     private fun extractFeaturesRecursively(view: View): Map<String, Serializable> {
-        val viewFeatures = configuration.featureExtractor.extractFeatures(view)
+        val viewFeatures = if (filterView(view)) {
+            configuration.featureExtractor.extractFeatures(view)
+        } else {
+            emptyMap()
+        }
 
         if (view !is ViewGroup) {
             return viewFeatures
@@ -97,12 +131,18 @@ class LayoutMatcher internal constructor(
         val childrenFeatures = arrayListOf<Map<String, Serializable>>()
 
         for (i in 0 until view.childCount) {
-            childrenFeatures.add(
-                extractFeaturesRecursively(view.getChildAt(i))
-            )
+            val childFeatures = extractFeaturesRecursively(view.getChildAt(i))
+
+            if (childFeatures.isNotEmpty()) {
+                childrenFeatures.add(childFeatures)
+            }
         }
 
         return viewFeatures + hashMapOf("children" to childrenFeatures)
+    }
+
+    private fun filterView(view: View): Boolean {
+        return viewIds?.let { view.id in it } ?: true
     }
 
 }
