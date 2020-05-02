@@ -16,15 +16,15 @@ class LayoutMatcher internal constructor(
     private var widthPx = 600
     private var heightPx = 800
 
-    fun withScreenSizePx(widthPx: Int, heightPx: Int): LayoutMatcher {
+    fun screenSizePx(widthPx: Int, heightPx: Int): LayoutMatcher {
         this.widthPx = widthPx
         this.heightPx = heightPx
 
         return this
     }
 
-    fun withScreenSize(widthDp: Int, heightDp: Int): LayoutMatcher {
-        return withScreenSizePx(
+    fun screenSize(widthDp: Int, heightDp: Int): LayoutMatcher {
+        return screenSizePx(
             dpToPx(widthDp.toFloat()).toInt(),
             dpToPx(heightDp.toFloat()).toInt()
         )

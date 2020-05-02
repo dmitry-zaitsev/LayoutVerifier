@@ -27,7 +27,7 @@ class DemoLayoutTest {
     @Test
     fun `Flat layout on a small screen`() {
         layoutVerifier.layout(R.layout.e1_flat_layout)
-            .withScreenSize(240, 320)
+            .screenSize(240, 320)
             .match("e1_flat_layout_240x320")
     }
 
