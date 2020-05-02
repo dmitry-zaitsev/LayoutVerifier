@@ -1,0 +1,25 @@
+{
+  "left": 0.0,
+  "top": 0.0,
+  "right": 240.0,
+  "bottom": 320.0,
+  "type": "android.widget.LinearLayout",
+  "children": [
+    {
+      "left": 0.0,
+      "top": 0.0,
+      "right": 240.0,
+      "bottom": 41.0,
+      "type": "android.widget.TextView",
+      "text": "Hello World"
+    },
+    {
+      "left": 0.0,
+      "top": 41.0,
+      "right": 240.0,
+      "bottom": 102.0,
+      "type": "android.widget.Button",
+      "text": "Button"
+    }
+  ]
+}

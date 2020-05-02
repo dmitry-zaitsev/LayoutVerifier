@@ -2,6 +2,7 @@ package com.redapparat.layoutverifier.extractor.content
 
 import android.view.View
 import android.widget.TextView
+import com.redapparat.layoutverifier.extractor.DefaultFeatures
 import com.redapparat.layoutverifier.extractor.FeatureExtractor
 import java.io.Serializable
 
@@ -12,7 +13,7 @@ class TextViewExtractor : FeatureExtractor {
         }
 
         return mapOf(
-            "text" to view.text.toString()
+            DefaultFeatures.TEXT to view.text.toString()
         )
     }
 }

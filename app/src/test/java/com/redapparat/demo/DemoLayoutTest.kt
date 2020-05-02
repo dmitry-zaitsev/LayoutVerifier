@@ -31,4 +31,10 @@ class DemoLayoutTest {
             .match("e1_flat_layout_240x320")
     }
 
+    @Test
+    fun `Nested layout`() {
+        layoutVerifier.layout(R.layout.e2_nested_layout)
+            .match("e2_nested_layout")
+    }
+
 }

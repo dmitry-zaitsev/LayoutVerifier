@@ -6,11 +6,11 @@ import java.io.Serializable
 class CommonExtractor : FeatureExtractor {
     override fun extractFeatures(view: View): Map<String, Serializable> {
         return mapOf(
-            "left" to view.left.toDouble(),
-            "top" to view.top.toDouble(),
-            "right" to view.right.toDouble(),
-            "bottom" to view.bottom.toDouble(),
-            "type" to view.javaClass.name
+            DefaultFeatures.LEFT to view.left.toDouble(),
+            DefaultFeatures.TOP to view.top.toDouble(),
+            DefaultFeatures.RIGHT to view.right.toDouble(),
+            DefaultFeatures.BOTTOM to view.bottom.toDouble(),
+            DefaultFeatures.TYPE to view.javaClass.name
         )
     }
 }
