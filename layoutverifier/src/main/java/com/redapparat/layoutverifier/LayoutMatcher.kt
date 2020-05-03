@@ -79,8 +79,8 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            val expected = snapshot - excludedFeatures
-            val actual = features - excludedFeatures
+            val expected = snapshot.excludeFeaturesRecursively(excludedFeatures)
+            val actual = features.excludeFeaturesRecursively(excludedFeatures)
 
             if (expected != actual) {
                 assertEquals(
@@ -146,11 +146,34 @@ class LayoutMatcher internal constructor(
             }
         }
 
-        return viewFeatures + hashMapOf("children" to childrenFeatures)
+        return viewFeatures + hashMapOf(ATTR_CHILDREN to childrenFeatures)
     }
 
     private fun filterView(view: View): Boolean {
         return viewIds?.let { view.id in it } ?: true
+    }
+
+    private fun Map<String, *>.excludeFeaturesRecursively(excludedFeatures: Iterable<String>): Map<String, *> {
+        val copiedMap = hashMapOf<String, Any?>()
+
+        copiedMap.putAll(this - (excludedFeatures + ATTR_CHILDREN))
+
+        get(ATTR_CHILDREN)
+            ?.let { list ->
+                @Suppress("UNCHECKED_CAST")
+                copiedMap[ATTR_CHILDREN] = (list as Iterable<Map<String, *>>)
+                    .map {
+                        it.excludeFeaturesRecursively(excludedFeatures)
+                    }
+            }
+
+        return copiedMap
+    }
+
+    companion object {
+
+        private const val ATTR_CHILDREN = "children"
+
     }
 
 }

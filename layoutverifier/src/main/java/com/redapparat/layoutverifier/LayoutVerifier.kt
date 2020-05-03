@@ -22,7 +22,7 @@ class LayoutVerifier private constructor(
 
         return LayoutMatcher(view, configuration)
     }
-    
+
     fun view(view: View): LayoutMatcher {
         return LayoutMatcher(view, configuration)
     }

@@ -1,0 +1,80 @@
+{
+  "left": 0.0,
+  "top": 0.0,
+  "right": 600.0,
+  "bottom": 800.0,
+  "type": "android.widget.LinearLayout",
+  "enabled": true,
+  "clickable": false,
+  "id": "No id",
+  "children": [
+    {
+      "left": 0.0,
+      "top": 0.0,
+      "right": 10.0,
+      "bottom": 82.0,
+      "type": "android.widget.LinearLayout",
+      "enabled": true,
+      "clickable": false,
+      "id": "No id",
+      "children": [
+        {
+          "left": 0.0,
+          "top": 0.0,
+          "right": 10.0,
+          "bottom": 41.0,
+          "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.layoutverifier.tests.test:id/textView_a",
+          "text": "TextView A"
+        },
+        {
+          "left": 0.0,
+          "top": 41.0,
+          "right": 10.0,
+          "bottom": 82.0,
+          "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.layoutverifier.tests.test:id/textView_b",
+          "text": "TextView B"
+        }
+      ]
+    },
+    {
+      "left": 0.0,
+      "top": 82.0,
+      "right": 20.0,
+      "bottom": 123.0,
+      "type": "android.widget.LinearLayout",
+      "enabled": true,
+      "clickable": false,
+      "id": "No id",
+      "children": [
+        {
+          "left": 0.0,
+          "top": 0.0,
+          "right": 10.0,
+          "bottom": 41.0,
+          "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.layoutverifier.tests.test:id/textView_c",
+          "text": "TextView C"
+        },
+        {
+          "left": 10.0,
+          "top": 0.0,
+          "right": 20.0,
+          "bottom": 41.0,
+          "type": "android.widget.TextView",
+          "enabled": true,
+          "clickable": false,
+          "id": "com.redapparat.layoutverifier.tests.test:id/textView_d",
+          "text": "TextView D"
+        }
+      ]
+    }
+  ]
+}

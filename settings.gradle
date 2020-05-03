@@ -1,3 +1,4 @@
 rootProject.name='My Application'
 include ':app'
 include ':layoutverifier'
+include ':layoutverifier-tests'
