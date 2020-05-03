@@ -10,6 +10,14 @@ import java.io.File
 import java.io.IOException
 import java.io.Serializable
 
+/**
+ * Performs layout matching based for a given view.
+ *
+ * Provide test-specific configuration (i.e. [LayoutMatcher.screenSize]) and
+ * call [LayoutMatcher.match].
+ *
+ * See [LayoutVerifier] for usage examples.
+ */
 class LayoutMatcher internal constructor(
     private val view: View,
     private val configuration: LayoutVerifier.Configuration
@@ -24,6 +32,9 @@ class LayoutMatcher internal constructor(
         DefaultFeatures.ID
     )
 
+    /**
+     * Set device screen size in pixels.
+     */
     fun screenSizePx(widthPx: Int, heightPx: Int): LayoutMatcher {
         this.widthPx = widthPx
         this.heightPx = heightPx
@@ -31,6 +42,9 @@ class LayoutMatcher internal constructor(
         return this
     }
 
+    /**
+     * Set device screen size in DP.
+     */
     fun screenSize(widthDp: Int, heightDp: Int): LayoutMatcher {
         return screenSizePx(
             dpToPx(widthDp.toFloat()).toInt(),
@@ -38,12 +52,23 @@ class LayoutMatcher internal constructor(
         )
     }
 
+    /**
+     * Only match following view IDs when running test and ignore the rest.
+     */
     fun views(@IdRes vararg viewIds: Int): LayoutMatcher {
         this.viewIds = viewIds.toSet()
 
         return this
     }
 
+    /**
+     * Enforce strict type matching (i.e. replacing RelativeLayout with ConstraintLayout will
+     * cause a test failure).
+     *
+     * `false` by default.
+     *
+     * **Note**: `matchType(false)` is equivalent to `excludeFeatures(setOf(DefaultFeatures.TYPE))`.
+     */
     fun matchType(match: Boolean): LayoutMatcher {
         if (match) {
             excludedFeatures.remove(DefaultFeatures.TYPE)
@@ -54,20 +79,25 @@ class LayoutMatcher internal constructor(
         return this
     }
 
+    /**
+     * Exclude features from matching process.
+     *
+     * Features excluded by default:
+     * - [DefaultFeatures.TYPE]
+     * - [DefaultFeatures.ID]
+     */
     fun excludeFeatures(toExclude: Iterable<String>): LayoutMatcher {
         excludedFeatures.addAll(toExclude)
 
         return this
     }
 
-    private fun dpToPx(dp: Float): Float {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp,
-            view.resources.displayMetrics
-        )
-    }
-
+    /**
+     * Performs matching. If no pre-recorded test results are available, succeeds the test and
+     * writes result to a file to be used for future test runs.
+     *
+     * Test name must be unique within build module (i.e. gradle module).
+     */
     fun match(testName: String) {
         prepareView(view)
 
@@ -168,6 +198,14 @@ class LayoutMatcher internal constructor(
             }
 
         return copiedMap
+    }
+
+    private fun dpToPx(dp: Float): Float {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            view.resources.displayMetrics
+        )
     }
 
     companion object {
