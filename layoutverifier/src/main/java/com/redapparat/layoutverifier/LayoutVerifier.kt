@@ -2,6 +2,7 @@ package com.redapparat.layoutverifier
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import androidx.annotation.LayoutRes
 import com.redapparat.layoutverifier.extractor.CompositeFeatureExtractor
 import com.redapparat.layoutverifier.extractor.FeatureExtractor
@@ -19,6 +20,10 @@ class LayoutVerifier private constructor(
     fun layout(@LayoutRes layoutId: Int): LayoutMatcher {
         val view = LayoutInflater.from(context).inflate(layoutId, null);
 
+        return LayoutMatcher(view, configuration)
+    }
+    
+    fun view(view: View): LayoutMatcher {
         return LayoutMatcher(view, configuration)
     }
 
