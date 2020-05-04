@@ -9,7 +9,7 @@ makes sure your Android screens are never broken again.
 - Library which makes sure that your Views are where they are supposed to be on the screen.
 - No need for an emulator.
 - No need for a build plugin or complex initial setup. Single library is all it takes.
-- As little as 3 lines to get started.
+- As little as 3 lines to write a test.
 - Similar to Screenshot tests. Minus screenshots.
 
 ## Usage
@@ -46,7 +46,7 @@ LayoutVerifier.Builder(getApplicationContext)
         R.id.buyButton, 
         R.id.totalPrice
     )
-    .match("test_case_name")    // optiona: arbitraty test case name which is unique to your module
+    .match("test_case_name")    // optional: arbitraty test case name which is unique to your module
 ```
 
 That is it. On the first run the test will pass and save a pre-recorded version of the layout to 
