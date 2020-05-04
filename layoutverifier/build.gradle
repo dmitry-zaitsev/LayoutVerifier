@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+group = 'com.redapparat'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -23,3 +25,15 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 }
+
+ext {
+    bintrayName = 'layoutverifier'
+
+    libraryName = 'LayoutVerifier'
+    artifact = 'layoutverifier'
+    libraryVersion = artifactVersion
+
+    libraryDescription = 'Test Android layouts without device'
+}
+
+apply from: '../deploy.gradle'
