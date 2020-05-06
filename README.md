@@ -10,7 +10,7 @@ makes sure your Android screens are never broken again.
 - No need for an emulator.
 - No need for a build plugin or complex initial setup. Single library is all it takes.
 - As little as 3 lines to write a test.
-- Similar to Screenshot tests. Minus screenshots.
+- Similar to Screenshot tests but much faster.
 
 ## Usage
 
