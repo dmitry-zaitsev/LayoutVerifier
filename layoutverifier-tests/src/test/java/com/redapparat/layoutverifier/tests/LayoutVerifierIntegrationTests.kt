@@ -187,6 +187,13 @@ class LayoutVerifierIntegrationTests {
         }
     }
 
+    @Test
+    fun `Case 14 - Schema v3 features`() {
+        defaultLayoutVerifier()
+            .layout(R.layout.case_014)
+            .match("schema_v3_features")
+    }
+
     @After
     fun deleteTemporarySnapshotFiles() {
         val testNames = listOf(

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 3,
+  "features": {
+    "left": 0.0,
+    "top": 0.0,
+    "right": 600.0,
+    "bottom": 800.0,
+    "type": "android.widget.LinearLayout",
+    "enabled": true,
+    "clickable": false,
+    "id": "No id",
+    "visibility": "VISIBLE",
+    "background": "null",
+    "children": [
+      {
+        "left": 0.0,
+        "top": 0.0,
+        "right": 42.0,
+        "bottom": 73.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "com.redapparat.layoutverifier.tests.test:id/textView_a",
+        "visibility": "VISIBLE",
+        "background": "#ffff0000",
+        "paddingStart": 16.0,
+        "paddingTop": 16.0,
+        "paddingEnd": 16.0,
+        "paddingBottom": 16.0,
+        "text": "TextView A",
+        "textColor": "#8a000000",
+        "textSize": 14.0
+      },
+      {
+        "left": 0.0,
+        "top": 0.0,
+        "right": 0.0,
+        "bottom": 0.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "com.redapparat.layoutverifier.tests.test:id/textView_b",
+        "visibility": "GONE",
+        "background": "Drawable",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
+        "text": "TextView B",
+        "textColor": "#8a000000",
+        "textSize": 14.0
+      }
+    ]
+  }
+}
