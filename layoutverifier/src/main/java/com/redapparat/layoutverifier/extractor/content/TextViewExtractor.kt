@@ -14,7 +14,8 @@ class TextViewExtractor : FeatureExtractor {
 
         return mapOf(
             DefaultFeatures.TEXT to view.text.toString(),
-            DefaultFeatures.TEXT_COLOR to "#${Integer.toHexString(view.currentTextColor)}"
+            DefaultFeatures.TEXT_COLOR to "#${Integer.toHexString(view.currentTextColor)}",
+            DefaultFeatures.TEXT_SIZE to view.textSize
         )
     }
 }

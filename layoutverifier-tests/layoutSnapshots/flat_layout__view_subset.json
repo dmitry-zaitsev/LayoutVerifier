@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "features": {
     "children": [
       {
@@ -11,8 +11,15 @@
         "enabled": true,
         "clickable": false,
         "id": "com.redapparat.layoutverifier.tests.test:id/textView_b",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "TextView B",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       }
     ]
   }
