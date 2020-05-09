@@ -18,8 +18,18 @@ class CommonExtractor : FeatureExtractor {
             DefaultFeatures.TYPE to view.javaClass.name,
             DefaultFeatures.ENABLED to view.isEnabled,
             DefaultFeatures.CLICKABLE to view.isClickable,
-            DefaultFeatures.ID to displayableId(view)
+            DefaultFeatures.ID to displayableId(view),
+            DefaultFeatures.VISIBILITY to visibility(view)
         )
+    }
+
+    private fun visibility(view: View): Serializable {
+        return when(view.visibility) {
+            View.VISIBLE -> "VISIBLE"
+            View.INVISIBLE -> "INVISIBLE"
+            View.GONE -> "GONE"
+            else -> "UNKNOWN"
+        }
     }
 
     private fun leafNodeFeatures(view: View): Map<String, Serializable> {

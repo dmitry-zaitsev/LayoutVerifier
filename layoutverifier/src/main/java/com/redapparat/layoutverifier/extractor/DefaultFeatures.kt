@@ -79,4 +79,9 @@ object DefaultFeatures {
      */
     const val PADDING_BOTTOM = "paddingBottom"
 
+    /**
+     * [View.getVisibility]
+     */
+    const val VISIBILITY = "visibility"
+
 }
