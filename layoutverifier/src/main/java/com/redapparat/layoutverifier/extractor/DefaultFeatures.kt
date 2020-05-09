@@ -49,4 +49,9 @@ object DefaultFeatures {
      */
     const val ID = "id"
 
+    /**
+     * Current color of a text.
+     */
+    const val TEXT_COLOR = "textColor"
+
 }

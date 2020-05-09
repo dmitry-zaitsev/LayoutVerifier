@@ -67,7 +67,8 @@ class LayoutVerifier private constructor(
     class Builder(private val context: Context) {
 
         private var featureExtractors: MutableList<FeatureExtractor> = arrayListOf()
-        private var snapshotsDirectory = "layoutSnapshots"
+        private var snapshotsDirectory = DEFAULT_SNAPSHOTS_PATH
+        private var schemaVersion = Schemas.latestVersion
 
         /**
          * Registers additional custom feature (aka attribute) extractor to be used during matching.
@@ -85,6 +86,11 @@ class LayoutVerifier private constructor(
             return this
         }
 
+        fun schemaVersion(version: Int): Builder {
+            schemaVersion = version
+            return this
+        }
+
         /**
          * Builds a new instance.
          */
@@ -99,7 +105,8 @@ class LayoutVerifier private constructor(
                         ) + featureExtractors
                     ),
                     snapshotsDirectory = File(snapshotsDirectory),
-                    serializer = GsonSerializer()
+                    serializer = GsonSerializer(),
+                    schemaVersion = schemaVersion
                 )
             )
         }
@@ -109,7 +116,14 @@ class LayoutVerifier private constructor(
     internal class Configuration(
         val featureExtractor: FeatureExtractor,
         val snapshotsDirectory: File,
-        val serializer: Serializer
+        val serializer: Serializer,
+        val schemaVersion: Int
     )
+
+    companion object {
+
+        const val DEFAULT_SNAPSHOTS_PATH = "layoutSnapshots"
+
+    }
 
 }

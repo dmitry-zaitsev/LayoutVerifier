@@ -109,24 +109,53 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            val expected = snapshot.excludeFeaturesRecursively(excludedFeatures)
-            val actual = features.excludeFeaturesRecursively(excludedFeatures)
+            val snapshotVersionCode = (snapshot["schemaVersion"] as? Double)?.toInt() ?: 0
+            val combinedExcludedFeatures = excludedFeatures.toMutableSet()
+
+            if (snapshotVersionCode < configuration.schemaVersion) {
+                combinedExcludedFeatures += Schemas.newlyAddedFeatures(snapshotVersionCode)
+            }
+
+            val snapshotFeatures = readFeaturesFromSnapshot(snapshot)
+
+            val expected = snapshotFeatures.excludeFeaturesRecursively(combinedExcludedFeatures)
+            val actual = features.excludeFeaturesRecursively(combinedExcludedFeatures)
 
             if (expected != actual) {
                 assertEquals(
                     configuration.serializer.toPrettyJson(expected),
                     configuration.serializer.toPrettyJson(actual)
                 )
+            } else {
+                if (snapshotVersionCode < configuration.schemaVersion) {
+                    saveSnapshot(features, testSnapshotFile)
+                }
             }
         } else {
-            ensureSnapshotsDirectoryExists()
-
-            configuration.serializer.serializeToStream(
-                features,
-                testSnapshotFile.outputStream()
-            )
+            saveSnapshot(features, testSnapshotFile)
         }
     }
+
+    private fun saveSnapshot(
+        features: Map<String, Serializable>,
+        testSnapshotFile: File
+    ) {
+        ensureSnapshotsDirectoryExists()
+
+        val featuresPayload = mapOf(
+            "schemaVersion" to configuration.schemaVersion,
+            "features" to features
+        )
+
+        configuration.serializer.serializeToStream(
+            featuresPayload,
+            testSnapshotFile.outputStream()
+        )
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun readFeaturesFromSnapshot(snapshot: Map<String, *>) =
+        snapshot["features"] as? Map<String, *> ?: snapshot
 
     private fun ensureSnapshotsDirectoryExists() {
         if (configuration.snapshotsDirectory.exists()) {
