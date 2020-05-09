@@ -1,5 +1,9 @@
 package com.redapparat.layoutverifier.extractor
 
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.ColorStateListDrawable
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.StateListDrawable
 import android.view.View
 import android.view.ViewGroup
 import java.io.Serializable
@@ -19,12 +23,31 @@ class CommonExtractor : FeatureExtractor {
             DefaultFeatures.ENABLED to view.isEnabled,
             DefaultFeatures.CLICKABLE to view.isClickable,
             DefaultFeatures.ID to displayableId(view),
-            DefaultFeatures.VISIBILITY to visibility(view)
+            DefaultFeatures.VISIBILITY to visibility(view),
+            DefaultFeatures.BACKGROUND to background(view)
         )
     }
 
+    private fun background(view: View): Serializable {
+        return view.background
+            ?.let { drawableAsString(it) }
+            ?: return "null"
+    }
+
+    private fun drawableAsString(drawable: Drawable): String {
+        if (drawable is ColorDrawable) {
+            return "#${Integer.toHexString(drawable.color)}"
+        }
+
+        if (drawable is StateListDrawable) {
+            return drawableAsString(drawable.current)
+        }
+
+        return "Drawable"
+    }
+
     private fun visibility(view: View): Serializable {
-        return when(view.visibility) {
+        return when (view.visibility) {
             View.VISIBLE -> "VISIBLE"
             View.INVISIBLE -> "INVISIBLE"
             View.GONE -> "GONE"

@@ -84,4 +84,9 @@ object DefaultFeatures {
      */
     const val VISIBILITY = "visibility"
 
+    /**
+     * Background of a view (either color hex or `Drawable` as a literal)
+     */
+    const val BACKGROUND = "background"
+
 }
