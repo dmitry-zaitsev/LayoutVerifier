@@ -109,7 +109,7 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            val snapshotVersionCode = snapshot["schemaVersion"] as? Int ?: 0
+            val snapshotVersionCode = (snapshot["schemaVersion"] as? Double)?.toInt() ?: 0
             val combinedExcludedFeatures = excludedFeatures.toMutableSet()
 
             if (snapshotVersionCode < configuration.schemaVersion) {
@@ -126,20 +126,31 @@ class LayoutMatcher internal constructor(
                     configuration.serializer.toPrettyJson(expected),
                     configuration.serializer.toPrettyJson(actual)
                 )
+            } else {
+                if (snapshotVersionCode < configuration.schemaVersion) {
+                    saveSnapshot(features, testSnapshotFile)
+                }
             }
         } else {
-            ensureSnapshotsDirectoryExists()
-
-            val featuresPayload = mapOf(
-                "schemaVersion" to configuration.schemaVersion,
-                "features" to features
-            )
-
-            configuration.serializer.serializeToStream(
-                featuresPayload,
-                testSnapshotFile.outputStream()
-            )
+            saveSnapshot(features, testSnapshotFile)
         }
+    }
+
+    private fun saveSnapshot(
+        features: Map<String, Serializable>,
+        testSnapshotFile: File
+    ) {
+        ensureSnapshotsDirectoryExists()
+
+        val featuresPayload = mapOf(
+            "schemaVersion" to configuration.schemaVersion,
+            "features" to features
+        )
+
+        configuration.serializer.serializeToStream(
+            featuresPayload,
+            testSnapshotFile.outputStream()
+        )
     }
 
     @Suppress("UNCHECKED_CAST")

@@ -67,7 +67,7 @@ class LayoutVerifier private constructor(
     class Builder(private val context: Context) {
 
         private var featureExtractors: MutableList<FeatureExtractor> = arrayListOf()
-        private var snapshotsDirectory = "layoutSnapshots"
+        private var snapshotsDirectory = DEFAULT_SNAPSHOTS_PATH
         private var schemaVersion = Schemas.latestVersion
 
         /**
@@ -118,5 +118,11 @@ class LayoutVerifier private constructor(
         val serializer: Serializer,
         val schemaVersion: Int
     )
+
+    companion object {
+
+        const val DEFAULT_SNAPSHOTS_PATH = "layoutSnapshots"
+
+    }
 
 }
