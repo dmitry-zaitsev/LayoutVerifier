@@ -109,8 +109,17 @@ class LayoutMatcher internal constructor(
                 testSnapshotFile.inputStream()
             )
 
-            val expected = snapshot.excludeFeaturesRecursively(excludedFeatures)
-            val actual = features.excludeFeaturesRecursively(excludedFeatures)
+            val snapshotVersionCode = snapshot["schemaVersion"] as? Int ?: 0
+            val combinedExcludedFeatures = excludedFeatures.toMutableSet()
+
+            if (snapshotVersionCode < configuration.schemaVersion) {
+                combinedExcludedFeatures += Schemas.newlyAddedFeatures(snapshotVersionCode)
+            }
+
+            val snapshotFeatures = readFeaturesFromSnapshot(snapshot)
+
+            val expected = snapshotFeatures.excludeFeaturesRecursively(combinedExcludedFeatures)
+            val actual = features.excludeFeaturesRecursively(combinedExcludedFeatures)
 
             if (expected != actual) {
                 assertEquals(
@@ -121,12 +130,21 @@ class LayoutMatcher internal constructor(
         } else {
             ensureSnapshotsDirectoryExists()
 
+            val featuresPayload = mapOf(
+                "schemaVersion" to configuration.schemaVersion,
+                "features" to features
+            )
+
             configuration.serializer.serializeToStream(
-                features,
+                featuresPayload,
                 testSnapshotFile.outputStream()
             )
         }
     }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun readFeaturesFromSnapshot(snapshot: Map<String, *>) =
+        snapshot["features"] as? Map<String, *> ?: snapshot
 
     private fun ensureSnapshotsDirectoryExists() {
         if (configuration.snapshotsDirectory.exists()) {
