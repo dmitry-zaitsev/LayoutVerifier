@@ -1,100 +1,111 @@
 {
-  "left": 0.0,
-  "top": 0.0,
-  "right": 240.0,
-  "bottom": 320.0,
-  "type": "androidx.recyclerview.widget.RecyclerView",
-  "enabled": true,
-  "clickable": false,
-  "id": "No id",
-  "children": [
-    {
-      "left": 0.0,
-      "top": 0.0,
-      "right": 6.0,
-      "bottom": 41.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 0"
-    },
-    {
-      "left": 0.0,
-      "top": 41.0,
-      "right": 6.0,
-      "bottom": 82.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 1"
-    },
-    {
-      "left": 0.0,
-      "top": 82.0,
-      "right": 6.0,
-      "bottom": 123.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 2"
-    },
-    {
-      "left": 0.0,
-      "top": 123.0,
-      "right": 6.0,
-      "bottom": 164.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 3"
-    },
-    {
-      "left": 0.0,
-      "top": 164.0,
-      "right": 6.0,
-      "bottom": 205.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 4"
-    },
-    {
-      "left": 0.0,
-      "top": 205.0,
-      "right": 6.0,
-      "bottom": 246.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 5"
-    },
-    {
-      "left": 0.0,
-      "top": 246.0,
-      "right": 6.0,
-      "bottom": 287.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 6"
-    },
-    {
-      "left": 0.0,
-      "top": 287.0,
-      "right": 6.0,
-      "bottom": 328.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "No id",
-      "text": "Item 7"
-    }
-  ]
+  "schemaVersion": 2,
+  "features": {
+    "left": 0.0,
+    "top": 0.0,
+    "right": 240.0,
+    "bottom": 320.0,
+    "type": "androidx.recyclerview.widget.RecyclerView",
+    "enabled": true,
+    "clickable": false,
+    "id": "No id",
+    "children": [
+      {
+        "left": 0.0,
+        "top": 0.0,
+        "right": 6.0,
+        "bottom": 41.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 0",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 41.0,
+        "right": 6.0,
+        "bottom": 82.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 1",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 82.0,
+        "right": 6.0,
+        "bottom": 123.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 2",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 123.0,
+        "right": 6.0,
+        "bottom": 164.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 3",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 164.0,
+        "right": 6.0,
+        "bottom": 205.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 4",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 205.0,
+        "right": 6.0,
+        "bottom": 246.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 5",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 246.0,
+        "right": 6.0,
+        "bottom": 287.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 6",
+        "textColor": "#8a000000"
+      },
+      {
+        "left": 0.0,
+        "top": 287.0,
+        "right": 6.0,
+        "bottom": 328.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "No id",
+        "text": "Item 7",
+        "textColor": "#8a000000"
+      }
+    ]
+  }
 }

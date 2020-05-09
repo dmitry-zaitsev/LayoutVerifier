@@ -6,10 +6,12 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.redapparat.layoutverifier.LayoutVerifier
 import com.redapparat.layoutverifier.extractor.DefaultFeatures
+import com.redapparat.layoutverifier.serializer.GsonSerializer
 import com.redapparat.layoutverifier.tests.view.SimpleAdapter
-import org.junit.Assert.fail
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.io.File
 import java.lang.AssertionError
 
 @RunWith(AndroidJUnit4::class)
@@ -109,6 +111,45 @@ class LayoutVerifierIntegrationTests {
             .view(recyclerView)
             .screenSize(240, 320)
             .match("recycler_view__50_elements")
+    }
+
+    @Test
+    fun `Case 12 - Schema version is the same - Do not rewrite snapshot file`() {
+        // Cleanup
+        val snapshotFile = File(
+            LayoutVerifier.DEFAULT_SNAPSHOTS_PATH,
+            "schema_version_idempotency.json"
+        )
+        if (snapshotFile.exists()) {
+            assertTrue(snapshotFile.delete())
+        }
+
+        // Run test once
+        defaultLayoutVerifier()
+            .layout(R.layout.case_001)
+            .match("schema_version_idempotency")
+
+        // Ensure file exists
+        assertTrue("Snapshot file exists", snapshotFile.exists())
+
+        // Read snapshot for the first run
+        val snapshotOnFirstRun = GsonSerializer().deserializeFromStream(snapshotFile.inputStream())
+
+        // Run test second time which will result in a different snapshot file
+        defaultLayoutVerifier()
+            .layout(R.layout.case_007)
+            .excludeFeatures(setOf(DefaultFeatures.TEXT))
+            .match("schema_version_idempotency")
+
+        // Read snapshot for the second run
+        val snapshotOnSecondRun = GsonSerializer().deserializeFromStream(snapshotFile.inputStream())
+
+        // Two runs should given an identical snapshot since the second run would not overwrite the
+        // file
+        assertEquals(
+            snapshotOnFirstRun,
+            snapshotOnSecondRun
+        )
     }
 
     private fun defaultLayoutVerifier() = LayoutVerifier.Builder(getApplicationContext())
