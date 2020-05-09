@@ -11,7 +11,7 @@ class GsonSerializer(
         .create()
 ) : Serializer {
 
-    override fun serializeToStream(entity: Map<String, Serializable>, stream: OutputStream) {
+    override fun serializeToStream(entity: Map<String, Any>, stream: OutputStream) {
         OutputStreamWriter(stream).use {
             gson.toJson(entity, it)
         }
