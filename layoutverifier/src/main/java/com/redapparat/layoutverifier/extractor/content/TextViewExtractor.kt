@@ -13,7 +13,8 @@ class TextViewExtractor : FeatureExtractor {
         }
 
         return mapOf(
-            DefaultFeatures.TEXT to view.text.toString()
+            DefaultFeatures.TEXT to view.text.toString(),
+            DefaultFeatures.TEXT_COLOR to view.currentTextColor
         )
     }
 }
