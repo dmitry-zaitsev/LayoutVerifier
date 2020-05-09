@@ -22,7 +22,6 @@ object Schemas {
         val addedFeatures = setOf(
             DefaultFeatures.TEXT_COLOR
         )
-
     }
 
 }

@@ -54,4 +54,29 @@ object DefaultFeatures {
      */
     const val TEXT_COLOR = "textColor"
 
+    /**
+     * Size of a text (in px).
+     */
+    const val TEXT_SIZE = "textSize"
+
+    /**
+     * [View.getPaddingStart]
+     */
+    const val PADDING_START = "paddingStart"
+
+    /**
+     * [View.getPaddingTop]
+     */
+    const val PADDING_TOP = "paddingTop"
+
+    /**
+     * [View.getPaddingEnd]
+     */
+    const val PADDING_END = "paddingEnd"
+
+    /**
+     * [View.getPaddingBottom]
+     */
+    const val PADDING_BOTTOM = "paddingBottom"
+
 }
