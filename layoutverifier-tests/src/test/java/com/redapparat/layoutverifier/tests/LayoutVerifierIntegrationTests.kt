@@ -5,9 +5,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.redapparat.layoutverifier.LayoutVerifier
+import com.redapparat.layoutverifier.Schemas
 import com.redapparat.layoutverifier.extractor.DefaultFeatures
 import com.redapparat.layoutverifier.serializer.GsonSerializer
 import com.redapparat.layoutverifier.tests.view.SimpleAdapter
+import org.junit.After
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -120,9 +122,6 @@ class LayoutVerifierIntegrationTests {
             LayoutVerifier.DEFAULT_SNAPSHOTS_PATH,
             "schema_version_idempotency.json"
         )
-        if (snapshotFile.exists()) {
-            assertTrue(snapshotFile.delete())
-        }
 
         // Run test once
         defaultLayoutVerifier()
@@ -150,6 +149,59 @@ class LayoutVerifierIntegrationTests {
             snapshotOnFirstRun,
             snapshotOnSecondRun
         )
+    }
+
+    @Test
+    fun `Case 13 - Schema version changed - Success, layout is valid in old schema`() {
+        // Run test on old schema
+        LayoutVerifier.Builder(getApplicationContext())
+            .schemaVersion(1)
+            .build()
+            .layout(R.layout.case_001)
+            .match("schema_update_success")
+
+        // Run test on new schema. Should succeed.
+        LayoutVerifier.Builder(getApplicationContext())
+            .schemaVersion(Schemas.latestVersion)
+            .build()
+            .layout(R.layout.case_001)
+            .match("schema_update_success")
+    }
+
+    @Test
+    fun `Case 13 - Schema version changed - Failure, layout is not valid in old schema`() {
+        // Run test on old schema
+        LayoutVerifier.Builder(getApplicationContext())
+            .schemaVersion(1)
+            .build()
+            .layout(R.layout.case_001)
+            .match("schema_update_failure")
+
+        // Run test on new schema. Should fail.
+        assertException(AssertionError::class.java) {
+            LayoutVerifier.Builder(getApplicationContext())
+                .schemaVersion(Schemas.latestVersion)
+                .build()
+                .layout(R.layout.case_002)
+                .match("schema_update_failure")
+        }
+    }
+
+    @After
+    fun deleteTemporarySnapshotFiles() {
+        val testNames = listOf(
+            "schema_version_idempotency",
+            "schema_update_success",
+            "schema_update_failure"
+        )
+
+        testNames
+            .map { File(LayoutVerifier.DEFAULT_SNAPSHOTS_PATH, "$it.json") }
+            .forEach {
+                if (it.exists()) {
+                    assertTrue(it.delete())
+                }
+            }
     }
 
     private fun defaultLayoutVerifier() = LayoutVerifier.Builder(getApplicationContext())

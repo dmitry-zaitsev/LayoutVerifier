@@ -86,8 +86,9 @@ class LayoutVerifier private constructor(
             return this
         }
 
-        internal fun schemaVersion(version: Int) {
+        fun schemaVersion(version: Int): Builder {
             schemaVersion = version
+            return this
         }
 
         /**

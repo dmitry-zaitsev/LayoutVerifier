@@ -2,7 +2,7 @@ package com.redapparat.layoutverifier
 
 import com.redapparat.layoutverifier.extractor.DefaultFeatures
 
-internal object Schemas {
+object Schemas {
 
     const val latestVersion = Version2.code
 
