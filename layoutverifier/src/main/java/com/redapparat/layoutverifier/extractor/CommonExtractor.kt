@@ -61,10 +61,10 @@ class CommonExtractor : FeatureExtractor {
         }
 
         return mapOf(
-            DefaultFeatures.PADDING_START to view.paddingStart,
-            DefaultFeatures.PADDING_TOP to view.paddingTop,
-            DefaultFeatures.PADDING_END to view.paddingEnd,
-            DefaultFeatures.PADDING_BOTTOM to view.paddingBottom
+            DefaultFeatures.PADDING_START to view.paddingStart.toDouble(),
+            DefaultFeatures.PADDING_TOP to view.paddingTop.toDouble(),
+            DefaultFeatures.PADDING_END to view.paddingEnd.toDouble(),
+            DefaultFeatures.PADDING_BOTTOM to view.paddingBottom.toDouble()
         )
     }
 

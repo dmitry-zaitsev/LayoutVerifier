@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "features": {
     "left": 0.0,
     "top": 0.0,
@@ -9,6 +9,8 @@
     "enabled": true,
     "clickable": false,
     "id": "No id",
+    "visibility": "VISIBLE",
+    "background": "null",
     "children": [
       {
         "left": 0.0,
@@ -19,8 +21,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 0",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -31,8 +40,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 1",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -43,8 +59,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 2",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -55,8 +78,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 3",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -67,8 +97,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 4",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -79,8 +116,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 5",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -91,8 +135,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 6",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       },
       {
         "left": 0.0,
@@ -103,8 +154,15 @@
         "enabled": true,
         "clickable": false,
         "id": "No id",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
         "text": "Item 7",
-        "textColor": "#8a000000"
+        "textColor": "#8a000000",
+        "textSize": 14.0
       }
     ]
   }
