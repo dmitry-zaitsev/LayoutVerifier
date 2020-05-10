@@ -57,6 +57,12 @@ layoutVerifier
 That is it. On the first run the test will pass and save a pre-recorded version of the layout to 
 disk. Make sure to keep this file and include it into your commits. 
 
+### Updating to a new version
+
+New versions of LayoutVerifier might include new attributes into view comparison which were not previously recorded in a snapshot file. LayoutVerifier takes care of backward compatibility and generates a new snapshot file if version update is detected.
+
+As such, after upgrading to a new version you might see that snapshot files have changed. That is expected, be sure to commit them as part of your repository as you would do for any new test.
+
 ## How it works
 
 ### Concept
