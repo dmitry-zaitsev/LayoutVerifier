@@ -1,34 +1,55 @@
 {
-  "left": 0.0,
-  "top": 0.0,
-  "right": 600.0,
-  "bottom": 800.0,
-  "type": "android.widget.LinearLayout",
-  "enabled": true,
-  "clickable": false,
-  "id": "No id",
-  "children": [
-    {
-      "left": 0.0,
-      "top": 0.0,
-      "right": 600.0,
-      "bottom": 41.0,
-      "type": "android.widget.TextView",
-      "enabled": true,
-      "clickable": false,
-      "id": "com.redapparat.demo:id/textView",
-      "text": "Hello World"
-    },
-    {
-      "left": 0.0,
-      "top": 41.0,
-      "right": 600.0,
-      "bottom": 102.0,
-      "type": "android.widget.Button",
-      "enabled": true,
-      "clickable": true,
-      "id": "com.redapparat.demo:id/button",
-      "text": "Button"
-    }
-  ]
+  "schemaVersion": 3,
+  "features": {
+    "left": 0.0,
+    "top": 0.0,
+    "right": 600.0,
+    "bottom": 800.0,
+    "type": "android.widget.LinearLayout",
+    "enabled": true,
+    "clickable": false,
+    "id": "No id",
+    "visibility": "VISIBLE",
+    "background": "null",
+    "children": [
+      {
+        "left": 0.0,
+        "top": 0.0,
+        "right": 600.0,
+        "bottom": 41.0,
+        "type": "android.widget.TextView",
+        "enabled": true,
+        "clickable": false,
+        "id": "com.redapparat.demo:id/textView",
+        "visibility": "VISIBLE",
+        "background": "null",
+        "paddingStart": 0.0,
+        "paddingTop": 0.0,
+        "paddingEnd": 0.0,
+        "paddingBottom": 0.0,
+        "text": "Hello World",
+        "textColor": "#8a000000",
+        "textSize": 14.0
+      },
+      {
+        "left": 0.0,
+        "top": 41.0,
+        "right": 600.0,
+        "bottom": 102.0,
+        "type": "android.widget.Button",
+        "enabled": true,
+        "clickable": true,
+        "id": "com.redapparat.demo:id/button",
+        "visibility": "VISIBLE",
+        "background": "Drawable",
+        "paddingStart": 12.0,
+        "paddingTop": 10.0,
+        "paddingEnd": 12.0,
+        "paddingBottom": 10.0,
+        "text": "Button",
+        "textColor": "#de000000",
+        "textSize": 14.0
+      }
+    ]
+  }
 }

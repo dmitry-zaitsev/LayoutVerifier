@@ -1,34 +1,53 @@
 {
-  "children": [
-    {
-      "children": [
-        {
-          "left": 298.0,
-          "top": 0.0,
-          "right": 301.0,
-          "bottom": 41.0,
-          "type": "android.widget.TextView",
-          "enabled": true,
-          "clickable": false,
-          "id": "com.redapparat.demo:id/text_top",
-          "text": "Top"
-        }
-      ]
-    },
-    {
-      "children": [
-        {
-          "left": 297.0,
-          "top": 0.0,
-          "right": 303.0,
-          "bottom": 41.0,
-          "type": "android.widget.TextView",
-          "enabled": true,
-          "clickable": false,
-          "id": "com.redapparat.demo:id/text_bottom",
-          "text": "Bottom"
-        }
-      ]
-    }
-  ]
+  "schemaVersion": 3,
+  "features": {
+    "children": [
+      {
+        "children": [
+          {
+            "left": 298.0,
+            "top": 0.0,
+            "right": 301.0,
+            "bottom": 41.0,
+            "type": "android.widget.TextView",
+            "enabled": true,
+            "clickable": false,
+            "id": "com.redapparat.demo:id/text_top",
+            "visibility": "VISIBLE",
+            "background": "null",
+            "paddingStart": 0.0,
+            "paddingTop": 0.0,
+            "paddingEnd": 0.0,
+            "paddingBottom": 0.0,
+            "text": "Top",
+            "textColor": "#8a000000",
+            "textSize": 14.0
+          }
+        ]
+      },
+      {
+        "children": [
+          {
+            "left": 297.0,
+            "top": 0.0,
+            "right": 303.0,
+            "bottom": 41.0,
+            "type": "android.widget.TextView",
+            "enabled": true,
+            "clickable": false,
+            "id": "com.redapparat.demo:id/text_bottom",
+            "visibility": "VISIBLE",
+            "background": "null",
+            "paddingStart": 0.0,
+            "paddingTop": 0.0,
+            "paddingEnd": 0.0,
+            "paddingBottom": 0.0,
+            "text": "Bottom",
+            "textColor": "#8a000000",
+            "textSize": 14.0
+          }
+        ]
+      }
+    ]
+  }
 }

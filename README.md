@@ -31,7 +31,7 @@ dependencies {
     
     // Make sure Robolectric is included
 
-    testImplementation 'com.redapparat:layoutverifier:1.0.0'
+    testImplementation 'com.redapparat:layoutverifier:1.1.0'
 }
 
 ```
@@ -39,7 +39,12 @@ dependencies {
 Then, simply write a JUnit test:
 
 ```
-LayoutVerifier.Builder(getApplicationContext)
+// LayoutVerifier instance can be reused between tests
+val layoutVerifier = LayoutVerifier.Builder(getApplicationContext())
+    .build()
+
+// For each new test, pick a layout and call match()
+layoutVerifier
     .layout(R.layout.myLayout)
     .screenSize(600, 800)       // optional: screen size in DP
     .views(                     // optional: those views which you care about, otherwise compare all views
