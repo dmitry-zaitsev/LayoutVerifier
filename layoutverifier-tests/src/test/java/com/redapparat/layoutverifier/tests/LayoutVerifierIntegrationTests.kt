@@ -14,7 +14,7 @@ import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.File
-import java.lang.AssertionError
+
 
 @RunWith(AndroidJUnit4::class)
 class LayoutVerifierIntegrationTests {
@@ -194,12 +194,26 @@ class LayoutVerifierIntegrationTests {
             .match("schema_v3_features")
     }
 
+    @Test
+    fun `Case 15 - Russian characters`() {
+        // Generate initial snapshot
+        defaultLayoutVerifier()
+            .layout(R.layout.case_015)
+            .match("russian_characters")
+
+        // Run validation against the saved snapshot
+        defaultLayoutVerifier()
+            .layout(R.layout.case_015)
+            .match("russian_characters")
+    }
+
     @After
     fun deleteTemporarySnapshotFiles() {
         val testNames = listOf(
             "schema_version_idempotency",
             "schema_update_success",
-            "schema_update_failure"
+            "schema_update_failure",
+            "russian_characters"
         )
 
         testNames

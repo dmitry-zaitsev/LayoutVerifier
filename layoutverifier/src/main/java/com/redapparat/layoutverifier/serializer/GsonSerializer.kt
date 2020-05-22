@@ -12,13 +12,13 @@ class GsonSerializer(
 ) : Serializer {
 
     override fun serializeToStream(entity: Map<String, Any>, stream: OutputStream) {
-        OutputStreamWriter(stream).use {
+        OutputStreamWriter(stream, Charsets.UTF_8).use {
             gson.toJson(entity, it)
         }
     }
 
     override fun deserializeFromStream(stream: InputStream): Map<String, *> {
-        return InputStreamReader(stream).use {
+        return InputStreamReader(stream, Charsets.UTF_8).use {
             gson.fromJson(
                 it,
                 object : TypeToken<Map<String, *>>() {}.type
