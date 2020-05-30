@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 3,
+  "features": {
+    "left": 0.0,
+    "top": 0.0,
+    "right": 600.0,
+    "bottom": 800.0,
+    "type": "android.view.View",
+    "enabled": true,
+    "clickable": false,
+    "id": "1 (Generated)",
+    "visibility": "VISIBLE",
+    "background": "null",
+    "paddingStart": 0.0,
+    "paddingTop": 0.0,
+    "paddingEnd": 0.0,
+    "paddingBottom": 0.0
+  }
+}
