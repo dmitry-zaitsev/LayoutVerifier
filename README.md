@@ -31,7 +31,7 @@ dependencies {
     
     // Make sure Robolectric is included
 
-    testImplementation 'com.redapparat:layoutverifier:1.1.1'
+    testImplementation 'com.redapparat:layoutverifier:1.1.2'
 }
 
 ```
