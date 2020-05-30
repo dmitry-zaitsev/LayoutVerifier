@@ -1,5 +1,6 @@
 package com.redapparat.layoutverifier.extractor
 
+import android.content.res.Resources
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.ColorStateListDrawable
 import android.graphics.drawable.Drawable
@@ -73,6 +74,10 @@ class CommonExtractor : FeatureExtractor {
             return "No id"
         }
 
-        return view.resources.getResourceName(view.id);
+        return try {
+            view.resources.getResourceName(view.id)
+        } catch (e: Resources.NotFoundException) {
+            "${view.id} (Generated)"
+        }
     }
 }

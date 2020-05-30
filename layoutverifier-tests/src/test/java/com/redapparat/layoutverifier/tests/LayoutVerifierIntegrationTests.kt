@@ -1,5 +1,6 @@
 package com.redapparat.layoutverifier.tests
 
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
@@ -205,6 +206,17 @@ class LayoutVerifierIntegrationTests {
         defaultLayoutVerifier()
             .layout(R.layout.case_015)
             .match("russian_characters")
+    }
+
+    @Test
+    fun `Case 16 - Generated view id`() {
+        val view = View(getApplicationContext())
+
+        view.id = View.generateViewId()
+
+        defaultLayoutVerifier()
+            .view(view)
+            .match("generated_view_id")
     }
 
     @After
